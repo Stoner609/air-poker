@@ -1,3 +1,0 @@
-# Separate deterministic game engine from the UI
-
-The browser prototype will keep Air Poker rules in a pure TypeScript domain engine whose state changes only through explicit events, while React remains a presentation and input layer. Every match uses seeded randomness and an ordered event log so it can be restored and replayed; the exact solver runs behind a Web Worker interface to keep expensive searches off the UI thread. This boundary costs more structure up front than component-local state, but makes the rule-heavy game independently testable, preserves reproducibility for balance work, and leaves the same engine reusable by a future authoritative server.
